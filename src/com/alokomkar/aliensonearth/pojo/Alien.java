@@ -8,6 +8,12 @@ public class Alien {
 	int mNoOfLegs = 0;
 	String mHomePlanet = "";
 	
+	public static String LABEL_CODE_NAME = "Code Name";
+	public static String LABEL_BLOOD_COLOR = "Blood Color";
+	public static String LABEL_NO_OF_ANTENNAS = "No of Antennas";
+	public static String LABEL_NO_OF_LEGS = "No of Legs";
+	public static String LABEL_HOME_PLANET = "Home Planet";
+	
 	/**
 	 * @return the mCodeName
 	 */
@@ -101,7 +107,7 @@ public class Alien {
 	
 	public static String[] getColumns() {
         
-        String[] cols = { "Code Name","Blood Color", "No Of Antennas", "No Of Legs", "Home Planet" };
+        String[] cols = { LABEL_CODE_NAME, LABEL_BLOOD_COLOR, LABEL_NO_OF_ANTENNAS, LABEL_NO_OF_LEGS, LABEL_HOME_PLANET };
 	    return cols;
 	    
     }
