@@ -1,4 +1,4 @@
-package com.alokomkar.alienonearth.auxillary;
+package com.alokomkar.aliensonearth.auxillary;
 
 public interface ProjectMessages {
 	

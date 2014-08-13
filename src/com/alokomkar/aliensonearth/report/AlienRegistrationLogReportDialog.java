@@ -1,4 +1,4 @@
-package com.alokomkar.alienonearth.report;
+package com.alokomkar.aliensonearth.report;
 
 
 import java.awt.Desktop;
@@ -8,9 +8,12 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import com.alokomkar.alienonearth.auxillary.AlienListRetriever;
-import com.alokomkar.alienonearth.auxillary.ProjectMessages;
-import com.alokomkar.alienonearth.auxillary.ProjectConstants;
+import net.xeoh.plugins.base.annotations.PluginImplementation;
+
+import com.alokomkar.aliensonearth.auxillary.AuxilaryClass;
+import com.alokomkar.aliensonearth.auxillary.ProjectConstants;
+import com.alokomkar.aliensonearth.auxillary.ProjectMessages;
+import com.alokomkar.aliensonearth.plugin.ReportPluginInterface;
 import com.alokomkar.aliensonearth.pojo.Alien;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -24,7 +27,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 /**
  * @author Alok Omkar
  */
-public class AlienRegistrationLogReportDialog  {
+@PluginImplementation
+public class AlienRegistrationLogReportDialog implements ReportPluginInterface {
 
 	private final String FILE_NAME;
 
@@ -39,12 +43,12 @@ public class AlienRegistrationLogReportDialog  {
 
 		this.FILE_NAME = ProjectConstants.KEY_PDF_REPORT_FILE_NAME;
 		this.filePath = ProjectConstants.KEY_REPORT_PATH;
-		this.mAlienArrayList = AlienListRetriever.readAlienListfromFile( );
+		this.mAlienArrayList = AuxilaryClass.readAlienListfromFile( AuxilaryClass.getAlienListFilePath() );
 		
 	}
 
 	
-	public void showReportCreationStatusDiaolg(String filePath){
+	public void showReportCreationStatusDiaolg( String filePath ){
 
 		if(filePath == null)
 		{
@@ -72,7 +76,7 @@ public class AlienRegistrationLogReportDialog  {
 		}
 	}
 
-
+	@Override
 	public void generateReport() {
 
 		String fileName = new AlienRegistrationlogPdfReport().generatePage( filePath + FILE_NAME );

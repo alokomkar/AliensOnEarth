@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-package com.alokomkar.alienonearth.report;
+package com.alokomkar.aliensonearth.report;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.alokomkar.alienonearth.auxillary.ProjectMessages;
+import com.alokomkar.aliensonearth.auxillary.ProjectMessages;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
