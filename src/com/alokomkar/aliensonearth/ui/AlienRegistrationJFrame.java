@@ -22,7 +22,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import com.alokomkar.alienonearth.auxillary.AlienListRetriever;
-import com.alokomkar.alienonearth.auxillary.ErrorMessages;
+import com.alokomkar.alienonearth.auxillary.ProjectMessages;
 import com.alokomkar.alienonearth.auxillary.ProjectConstants;
 import com.alokomkar.aliensonearth.pojo.Alien;
 
@@ -314,7 +314,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 
 	private void writeAlienToFile( Alien alien ) {
 
-		String path = "C:\\Aliens.txt";
+		String path = ProjectConstants.KEY_TEXT_FILE_PATH;
 		File file = new File(path);
 		FileWriter fileWriter;
 		try {
@@ -332,23 +332,23 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 
 	private boolean validateData() {
 
-		if( validateAlienFeature( mAlienCodeTxtField.getText(), ErrorMessages.EMPTY_ALIEN_CODE ) == false ) {
+		if( validateAlienFeature( mAlienCodeTxtField.getText(), ProjectMessages.EMPTY_ALIEN_CODE ) == false ) {
 			mAlienCodeTxtField.requestFocus();
 			return false;
 		}
-		else if( validateAlienFeature( mBloodColorTxtField.getText(), ErrorMessages.EMPTY_BLOOD_COLOR ) == false ) {
+		else if( validateAlienFeature( mBloodColorTxtField.getText(), ProjectMessages.EMPTY_BLOOD_COLOR ) == false ) {
 			mBloodColorTxtField.requestFocus();
 			return false;
 		}
-		else if( validateAlienFeature( mHomePlanetTxtField.getText(), ErrorMessages.EMPTY_HOME_PLANET ) == false ) {
+		else if( validateAlienFeature( mHomePlanetTxtField.getText(), ProjectMessages.EMPTY_HOME_PLANET ) == false ) {
 			mHomePlanetTxtField.requestFocus();
 			return false;
 		}
-		else if( validateAlienFeature( mNoOfAntennasTxtField.getText(), ErrorMessages.EMPTY_NO_OF_ANTENNA ) == false ) {
+		else if( validateAlienFeature( mNoOfAntennasTxtField.getText(), ProjectMessages.EMPTY_NO_OF_ANTENNA ) == false ) {
 			mNoOfAntennasTxtField.requestFocus();
 			return false;
 		}
-		else if( validateAlienFeature( mNoOfLegsTxtField.getText(), ErrorMessages.EMPTY_NO_OF_LEGS ) == false ) {
+		else if( validateAlienFeature( mNoOfLegsTxtField.getText(), ProjectMessages.EMPTY_NO_OF_LEGS ) == false ) {
 			mNoOfLegsTxtField.requestFocus();
 			return false;
 		}

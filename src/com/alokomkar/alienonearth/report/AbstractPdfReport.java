@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.alokomkar.alienonearth.auxillary.ProjectMessages;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -81,7 +82,7 @@ public abstract class AbstractPdfReport {
 	{
 
 		if(fileName == null)
-			throw new NullPointerException("File name cannot be null");
+			throw new NullPointerException(ProjectMessages.EMPTY_FILE_NAME);
 
 		if(fileName.endsWith(".pdf") == false)
 			fileName += ".pdf";
@@ -126,7 +127,7 @@ public abstract class AbstractPdfReport {
 	{
 
 		if(fileName == null)
-			throw new NullPointerException("File name cannot be null");
+			throw new NullPointerException(ProjectMessages.EMPTY_FILE_NAME);
 
 		if(fileName.endsWith(".pdf") == false)
 			fileName += ".pdf";
@@ -192,8 +193,8 @@ public abstract class AbstractPdfReport {
 		if(subjct != null)
 			document.addSubject(subjct);
 
-		document.addAuthor("Report generator");
-		document.addCreator("Alok Omkar");
+		document.addAuthor(ProjectMessages.REPORT_GENERATOR);
+		document.addCreator(ProjectMessages.REPORT_CREATOR);
 		document.addCreationDate();
 
 		addLineSeperator(document);
