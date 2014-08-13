@@ -93,7 +93,6 @@ public abstract class AbstractPdfReport {
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
 			HeaderFooter event = new HeaderFooter();
 
-			//writer.setBoxSize("art", new Rectangle(36, 54, 559, 788));
 			writer.setPageEvent(event);
 
 			document.open();
@@ -139,7 +138,6 @@ public abstract class AbstractPdfReport {
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
 			HeaderFooter event = new HeaderFooter();
 
-			//writer.setBoxSize("art", new Rectangle(36, 54, 559, 788));
 			writer.setPageEvent(event);
 
 			document.open();

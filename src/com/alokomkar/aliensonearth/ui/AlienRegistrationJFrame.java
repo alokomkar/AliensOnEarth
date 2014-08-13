@@ -5,11 +5,9 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -24,6 +22,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import com.alokomkar.alienonearth.auxillary.AlienListRetriever;
+import com.alokomkar.alienonearth.auxillary.ErrorMessages;
+import com.alokomkar.alienonearth.auxillary.ProjectConstants;
 import com.alokomkar.aliensonearth.pojo.Alien;
 
 /**
@@ -53,9 +53,9 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 		mAlienCodeLbl = new javax.swing.JLabel();
 		mBloodColorLbl = new javax.swing.JLabel();
 		mNoOfAntennasLbl = new javax.swing.JLabel();
-		jLabel1 = new javax.swing.JLabel();
+		mNoOfLegsLbl = new javax.swing.JLabel();
 		mHomePlanetLbl = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
+		mConsoltTitleLbl = new javax.swing.JLabel();
 		mAlienCodeTxtField = new javax.swing.JTextField();
 		mBloodColorTxtField = new javax.swing.JTextField();
 		mNoOfAntennasTxtField = new javax.swing.JTextField();
@@ -74,40 +74,40 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 
 		jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-		mAlienCodeLbl.setText("Alien Code");
+		mAlienCodeLbl.setText(Alien.LABEL_CODE_NAME);
 
-		mBloodColorLbl.setText("Blood Color");
+		mBloodColorLbl.setText(Alien.LABEL_BLOOD_COLOR);
 
-		mNoOfAntennasLbl.setText("No of Antennas");
+		mNoOfAntennasLbl.setText(Alien.LABEL_NO_OF_ANTENNAS);
 
-		jLabel1.setText("No of Legs");
+		mNoOfLegsLbl.setText(Alien.LABEL_NO_OF_LEGS);
 
-		mHomePlanetLbl.setText("Home Planet");
+		mHomePlanetLbl.setText(Alien.LABEL_HOME_PLANET);
 
-		jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-		jLabel2.setText("Alien Registration Console");
+		mConsoltTitleLbl.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+		mConsoltTitleLbl.setText("Alien Registration Console");
 
 		mSubmitBtn.setText("Submit");
 		mSubmitBtn.addActionListener( mButtonActionListener );
-		
+
 		mResetBtn.setText("Reset");
 		mResetBtn.addActionListener( mButtonActionListener );
 
 		mReportFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Select","Plain Text", "PDF" }));
-		
+
 		mReportFormatComboBox.addActionListener( mButtonActionListener );
 		mAlienJList.setModel(mStatusListModel);
 		jScrollPane1.setViewportView(mAlienJList);
 
 		mPrintBtn.setText("Print");
 		mPrintBtn.addActionListener( mButtonActionListener );
-		
+
 		mAlienList = AlienListRetriever.readAlienListfromFile();
-		
+
 		if( mAlienList.size() > 0 && mAlienList != null ) {
 			populateAlienJList(mAlienList);
 		}
-		
+
 		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(
@@ -137,7 +137,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 																																.addComponent(mNoOfAntennasLbl)
 																																.addGap(18, 18, 18))
 																																.addGroup(jPanel1Layout.createSequentialGroup()
-																																		.addComponent(jLabel1)
+																																		.addComponent(mNoOfLegsLbl)
 																																		.addGap(42, 42, 42)))
 																																		.addGroup(jPanel1Layout.createSequentialGroup()
 																																				.addComponent(mHomePlanetLbl)
@@ -157,7 +157,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 																																										.addComponent(mPrintBtn))
 																																										.addGroup(jPanel1Layout.createSequentialGroup()
 																																												.addGap(72, 72, 72)
-																																												.addComponent(jLabel2)))
+																																												.addComponent(mConsoltTitleLbl)))
 																																												.addGap(0, 52, Short.MAX_VALUE)))
 																																												.addContainerGap())
 				);
@@ -165,7 +165,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 				jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(jPanel1Layout.createSequentialGroup()
 						.addGap(15, 15, 15)
-						.addComponent(jLabel2)
+						.addComponent(mConsoltTitleLbl)
 						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 								.addComponent(mAlienCodeLbl)
@@ -180,7 +180,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 												.addComponent(mNoOfAntennasTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 												.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(jLabel1)
+														.addComponent(mNoOfLegsLbl)
 														.addComponent(mNoOfLegsTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 														.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,7 +219,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>                        
 
-	
+
 
 	/**
 	 * @param args the command line arguments
@@ -231,7 +231,7 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 		 */
 		try {
-			
+
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -252,21 +252,21 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				
+
 				AlienRegistrationJFrame alienRegistrationJFrame = new AlienRegistrationJFrame();
-				
+
 				// Get the size of the screen
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-				 
+
 				// Determine the new location of the window
 				int w = alienRegistrationJFrame.getSize().width;
 				int h = alienRegistrationJFrame.getSize().height;
 				int x = (dim.width-w)/2;
 				int y = (dim.height-h)/2;
-				 
+
 				// Move the window
 				alienRegistrationJFrame.setLocation(x, y);
-				
+
 				alienRegistrationJFrame.setVisible(true);
 			}
 		});
@@ -280,10 +280,10 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 			if ( eventObject == mSubmitBtn ) { 
 				btnSubmitAction();
 			}
-			if( eventObject == mResetBtn ) {
+			else if( eventObject == mResetBtn ) {
 				btnResetAction();
 			}
-			if( eventObject == mPrintBtn ) {
+			else if( eventObject == mPrintBtn ) {
 				btnPrintAction();
 			}
 
@@ -291,27 +291,27 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 	};
 
 	protected void btnSubmitAction() {
-		
+
 		if( validateData() == true ) {
-			
+
 			Alien alien = new Alien();
-			
+
 			alien.setmBloodColor(mBloodColorTxtField.getText());
 			alien.setmCodeName(mAlienCodeTxtField.getText());
 			alien.setmHomePlanet(mHomePlanetTxtField.getText());
 			alien.setmNoOfAntennas(Integer.parseInt(mNoOfAntennasTxtField.getText()));
 			alien.setmNoOfLegs(Integer.parseInt(mNoOfLegsTxtField.getText()));
-			
+
 			writeAlienToFile( alien );
-			
+
 			mAlienList.add( alien );
-			
+
 			populateAlienJList( mAlienList );
-	
+
 		}
-		
+
 	}
-	
+
 	private void writeAlienToFile( Alien alien ) {
 
 		String path = "C:\\Aliens.txt";
@@ -327,47 +327,41 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private boolean validateData() {
-		
-		String alienFeature = null;
-		alienFeature = mAlienCodeTxtField.getText();
-		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
-			displayErrorDialog( "Please Enter Alien Code ");
+
+		if( validateAlienFeature( mAlienCodeTxtField.getText(), ErrorMessages.EMPTY_ALIEN_CODE ) == false ) {
 			mAlienCodeTxtField.requestFocus();
 			return false;
 		}
-		
-		alienFeature = mBloodColorTxtField.getText(); 
-		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
-			displayErrorDialog( "Please Enter Alien Blood Color");
+		else if( validateAlienFeature( mBloodColorTxtField.getText(), ErrorMessages.EMPTY_BLOOD_COLOR ) == false ) {
 			mBloodColorTxtField.requestFocus();
 			return false;
 		}
-		
-		alienFeature = mHomePlanetTxtField.getText();
-		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
-			displayErrorDialog( "Please Enter Alien Home Planet ");
+		else if( validateAlienFeature( mHomePlanetTxtField.getText(), ErrorMessages.EMPTY_HOME_PLANET ) == false ) {
 			mHomePlanetTxtField.requestFocus();
 			return false;
 		}
-		
-		alienFeature = mNoOfAntennasTxtField.getText();
-		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
-			displayErrorDialog( "Please Enter Number of Antennas ");
+		else if( validateAlienFeature( mNoOfAntennasTxtField.getText(), ErrorMessages.EMPTY_NO_OF_ANTENNA ) == false ) {
 			mNoOfAntennasTxtField.requestFocus();
 			return false;
 		}
-		
-		alienFeature = mNoOfLegsTxtField.getText();
-		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
-			displayErrorDialog( "Please Enter Number of Legs ");
+		else if( validateAlienFeature( mNoOfLegsTxtField.getText(), ErrorMessages.EMPTY_NO_OF_LEGS ) == false ) {
 			mNoOfLegsTxtField.requestFocus();
 			return false;
 		}
 		
+		return true;
+	}
+
+
+	private boolean validateAlienFeature( String alienFeature, String errorMessage ) {
+		if( alienFeature.equals(null) || alienFeature.trim().length() == 0 ) {
+			displayErrorDialog( errorMessage );
+			return false;
+		}
 		return true;
 	}
 
@@ -388,32 +382,32 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 	}
 
 	protected void btnPrintAction() {
-		
+
 		int option = mReportFormatComboBox.getSelectedIndex();
 		if( mReportList == null || mReportList.size() == 0 ) {
 			mReportList = populateReportList();
 		}
-		
+
 		if( option == 1 ) {
 			try {
-				Desktop.getDesktop().open(new File("C:\\Aliens.txt"));
+				Desktop.getDesktop().open(new File(ProjectConstants.KEY_TEXT_FILE_PATH));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			return;
 		}
 		String reportType = mReportList.get(0);
-		
+
 		Class<?> classObject = null;
 		@SuppressWarnings("rawtypes")
 		Constructor constructor = null;
 		Object object = null;
 		try {
-			
-			classObject = Class.forName("com.alokomkar.alienonearth.report."+reportType);
+
+			classObject = Class.forName( ProjectConstants.KEY_REPORT_PACKAGE_NAME + reportType );
 			constructor = classObject.getConstructor(null);
 			object = constructor.newInstance();
-			
+
 		} catch (ClassNotFoundException e) {
 			JOptionPane.showMessageDialog(this, "Class not found", null, JOptionPane.ERROR_MESSAGE);
 		} catch (SecurityException e) {
@@ -445,30 +439,30 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 
-		
-		
+
+
 	}
 
 	@SuppressWarnings("resource")
 	private ArrayList<String> populateReportList() {
-		
-		File file = new File("C:\\AlienConsoleSystemConfig.dat");
-	    ArrayList<String> reportTypes = new ArrayList<String>();
-	    Scanner in;
+
+		File file = new File(ProjectConstants.KEY_SYSTEM_CONFIG_DATA_PATH);
+		ArrayList<String> reportTypes = new ArrayList<String>();
+		Scanner in;
 		try {
 			in = new Scanner(file);
 			while (in.hasNextLine()){
-		        reportTypes.add(in.nextLine());
-		    }
+				reportTypes.add(in.nextLine());
+			}
 			return reportTypes;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	    return null;
+		return null;
 	}
 
 	protected void btnResetAction() {
-	
+
 		mBloodColorTxtField.setText("");
 		mAlienCodeTxtField.setText("");
 		mHomePlanetTxtField.setText("");
@@ -479,8 +473,8 @@ public class AlienRegistrationJFrame extends javax.swing.JFrame {
 
 	private ArrayList<String> mReportList;
 	// Variables declaration - do not modify                     
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
+	private javax.swing.JLabel mNoOfLegsLbl;
+	private javax.swing.JLabel mConsoltTitleLbl;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JList<String> mAlienJList;

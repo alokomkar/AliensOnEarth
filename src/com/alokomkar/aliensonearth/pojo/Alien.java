@@ -8,7 +8,7 @@ public class Alien {
 	int mNoOfLegs = 0;
 	String mHomePlanet = "";
 	
-	public static String LABEL_CODE_NAME = "Code Name";
+	public static String LABEL_CODE_NAME = "Alient Code";
 	public static String LABEL_BLOOD_COLOR = "Blood Color";
 	public static String LABEL_NO_OF_ANTENNAS = "No of Antennas";
 	public static String LABEL_NO_OF_LEGS = "No of Legs";
