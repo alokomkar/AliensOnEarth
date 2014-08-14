@@ -9,5 +9,6 @@ public interface ProjectConstants {
 	public static String KEY_REPORT_PATH = "C:/";
 	public static String KEY_FILE_NAME_WINDOWS = "Aliens.txt";
 	public static String KEY_FILE_NAME_UNIX = "Aliens";
+	public static String KEY_PLUGIN_DIRECTORY = "Plugins";
 	
 }

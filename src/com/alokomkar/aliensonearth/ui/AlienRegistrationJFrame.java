@@ -244,13 +244,14 @@ public class AlienRegistrationJFrame extends AbstractRegistrationFrame {
 
 	}
 
-	@SuppressWarnings("resource")
+	
 	private ArrayList<String> populateReportList() {
 
 		//TODO To read all available files in a specific directory
 
 		ArrayList<String> reportTypes = new ArrayList<String>();
-		File folder = new File("C:/plugins");
+		System.out.println(AuxilaryClass.getConfigFileDir( ) + ProjectConstants.KEY_PLUGIN_DIRECTORY);
+		File folder = new File( AuxilaryClass.getConfigFileDir( ) + ProjectConstants.KEY_PLUGIN_DIRECTORY );
 		File[] listOfFiles = folder.listFiles();
 
 		if( listOfFiles.length > 0 ) {
